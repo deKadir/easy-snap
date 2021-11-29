@@ -10,7 +10,14 @@ const Query={
     },
     snaps:async(parent,args,{Snap})=>{
         return await Snap.find({});
+    },
+    activeUser:async(parent,args,{activeUser,User})=>{
+        if(!activeUser){
+            return null;
+        }
+        return await User.findOne({username:activeUser.username})
     }
+
 }
 
 module.exports=Query;
